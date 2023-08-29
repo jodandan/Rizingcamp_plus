@@ -25,7 +25,7 @@ const LeftButton = styled.button`
     font-weight: 700;
     background: none;
     border: none;
-    margin-left: 4rem;
+    margin-left: 12rem;
 
 `;
 

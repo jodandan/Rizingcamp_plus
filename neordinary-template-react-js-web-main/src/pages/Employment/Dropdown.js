@@ -11,7 +11,7 @@ const DropdownMenu = styled.div`
     background-color: #fff;
     border: 1px solid #e1e2e3;
     border-radius: 4px;
-    margin-left: 5rem;
+    margin-left: 12rem;
     width: 190px;
     max-height: 70vh; /* 최대 높이 설정 */
     overflow-y: auto; /* 스크롤 가능하게 설정 */
