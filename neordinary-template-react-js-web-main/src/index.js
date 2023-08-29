@@ -12,7 +12,7 @@ const store = createStore(RootReducer, composeWithDevTools())
 
 ReactDOM.render(
   <Provider store={store}>
-    <GlobalStyle />
+    {/* <GlobalStyle /> */}
     <App />
   </Provider>,
   document.getElementById('root'),
