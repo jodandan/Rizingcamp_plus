@@ -4,6 +4,7 @@ import AppContent from '../components/AppContent'
 import AppFooter from '../components/AppFooter'
 // import AutoSlider from '../components/AutoSlider'
 import Slider from '../Slider/Slider'
+import EmploymentButton from '../components/EmploymentButton'
 import styled from 'styled-components'
 import {supportDeviceSize} from '../components/styled'
 
@@ -29,11 +30,9 @@ const DefaultLayout = () => {
 
   return (
     <Root>
-      {/* <AppHeader /> */}
+      <AppHeader />
       <Slider />
-      {/* <AutoSlider/> */}
-      {/* <AppContent />
-      <AppFooter /> */}
+      <EmploymentButton />
     </Root>
   )
 }

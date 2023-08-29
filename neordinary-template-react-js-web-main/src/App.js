@@ -1,7 +1,9 @@
-import React, {Suspense} from 'react'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import React, { Suspense } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AppHeader from './components/AppHeader'
 import DefaultLayout from './layout/DefaultLayout'
+import EmploymentButton from './components/EmploymentButton'
+import Employment from './pages/Employment/Employment'
 
 const loading = <div>화면을 불러오는 중 입니다.</div>
 
@@ -17,8 +19,13 @@ const loading = <div>화면을 불러오는 중 입니다.</div>
 const App = () => {
   return (
     <div className="App">
-      <AppHeader />
-      <DefaultLayout />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/*' name='Home' element={<DefaultLayout />} />
+          <Route path="/employment" element={<Employment />}  />
+        </Routes>
+      </BrowserRouter>
+
     </div>
   )
 }
