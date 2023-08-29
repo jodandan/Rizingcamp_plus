@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AppHeader from './components/AppHeader'
+import AppLogin from './components/AppLogin'
 import DefaultLayout from './layout/DefaultLayout'
 import EmploymentButton from './components/EmploymentButton'
 import Employment from './pages/Employment/Employment'
@@ -23,6 +24,7 @@ const App = () => {
         <Routes>
           <Route exact path='/*' name='Home' element={<DefaultLayout />} />
           <Route path="/employment" element={<Employment />}  />
+          <Route path="/login" element={<AppLogin />}  />
         </Routes>
       </BrowserRouter>
 
