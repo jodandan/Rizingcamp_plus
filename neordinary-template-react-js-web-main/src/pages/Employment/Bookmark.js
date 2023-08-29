@@ -31,7 +31,7 @@ const GotoBookMark = styled.button`
   cursor: pointer;
   color: #3366ff;
   margin-top: 2rem;
-  margin-left: 11rem;
+  margin-left: 11.5rem;
   background: none;
   border: none;
 

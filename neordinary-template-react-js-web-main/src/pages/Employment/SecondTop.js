@@ -6,16 +6,17 @@ import ThirdButtonComponent from "../../components/ThirdButtonComponent";
 import LastButtonComponent from "../../components/LastButtonComponent";
 
 import BookMark from "./Bookmark";
+import CompanyList from "./CompanyList";
 
 
 const Container = styled.div`
-    border-bottom: 1px solid grey;
+
     height: 100px;
 `;
 
 const Box = styled.div`
     margin-top: 2rem;
-    border-bottom: 1px solid grey;
+
     display: flex;
 `;
 
@@ -38,6 +39,7 @@ const SecondTop = () => {
                 <Divider/>
             </Container>
             <BookMark/>
+            <CompanyList/>
 
         </>
     );

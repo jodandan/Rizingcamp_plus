@@ -17,12 +17,12 @@ const Button = styled.button`
 `;
 
 const Region = styled.span`
-    border: 1px solid red;
+
     margin-right: 1rem;
 `;
 
 const Korea = styled.span`
-    border: 1px solid blue;
+
     margin-right: 0.5rem;
     color: blue;
 `;
