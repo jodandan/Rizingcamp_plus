@@ -1,0 +1,33 @@
+/* Header Container */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+}
+
+.Mainbar button{
+    margin-right: 15px;
+    background-color: white;
+    border: none;
+}
+
+.menu-list {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin-right: 50px;
+}
+
+.menu-list a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 15px 0px;
+  font-size: 13px;
+}
+
+.sidebar {
+    gap: 50px;
+}
