@@ -6,7 +6,7 @@ import DefaultLayout from './layout/DefaultLayout'
 import EmploymentButton from './components/EmploymentButton'
 import Employment from './pages/Employment/Employment'
 
-const loading = <div>화면을 불러오는 중 입니다.</div>
+const loading = <div>화면을 불러오는 중 입니다</div>
 
 // Containers
 

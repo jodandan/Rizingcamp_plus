@@ -33,7 +33,7 @@ const AppHeader = () => {
               <a href="#">Link 1</a>
               <a href="#">Link 2</a>
               <a href="#">Link 3</a>
-              <a href="#">Link 3</a>
+        
             </div>
         </div>
           <svg width={74} height={21} viewBox="0 0 140 32">

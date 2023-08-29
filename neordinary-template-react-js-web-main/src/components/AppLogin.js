@@ -22,7 +22,7 @@ const AppLogin = () => {
 
   return (
     <body>
-            로그인
+            
     </body>
     
   );
