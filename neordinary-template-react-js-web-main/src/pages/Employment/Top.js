@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Dropdown from './Dropdown';
 
 const CategoryBox = styled.div`
-    border: 1px solid gray;
+
     display: flex;
     position: relative; 
     margin-top: 2rem;
@@ -25,7 +25,7 @@ const LeftButton = styled.button`
     font-weight: 700;
     background: none;
     border: none;
-    margin-left: 4rem;
+    margin-left: 12rem;
 
 `;
 
