@@ -39,7 +39,11 @@ const AppHeader = () => {
             </div>
         </div>
           <ul className="menu-list">
-          <a>채용</a>
+          <Link to="/employment">
+          <a>
+            채용
+            </a>
+          </Link>
           <a>이벤트</a>
           <a>이력서</a>
           <a>소셜</a>
