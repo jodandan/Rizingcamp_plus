@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import SubmitTemaplete from './SubmitTemaplete.js'; // Submit 컴포넌트를 import
+
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareAlt, faBookmark, faUserCircle } from '@fortawesome/free-solid-svg-icons';
@@ -7,59 +9,89 @@ import { faShareAlt, faBookmark, faUserCircle } from '@fortawesome/free-solid-sv
 
 
 
-function ApplyBox( goToApply ) {
+function ApplyBox({
+    likeuser,
+    handleMove,
+    handleModal,
+    handleShareModal,
+    shareToggle,
+    onLikeToggle,
+    goToApply,
+    likeToggle,
+    likeNumber,
+    modal,
+    recruitList,
+}) {
+    const [showSubmit, setShowSubmit] = useState(false); // 상태 추가
+
+    // useEffect(() => {
+    //     console.log('showSubmit is now:', showSubmit);
+    //     console.log('goToApply is now:', goToApply);
+    //   }, [showSubmit] ,[goToApply]);
+
+    const handleApplyClick = () => {
+        console.log('Apply 버튼 클릭됨'); // 이 줄 추가
+      setShowSubmit(true); // '지원하기' 버튼 클릭 시 Submit 컴포넌트 표시
+
+    };
+    
     return(
-        <ApplyTemplateBlock>
-          <ApplyTemplateText>
-            채용보상금
-            <Share>
-                <i>
-                    <FontAwesomeIcon icon={faShareAlt} /> 
-                </i>
-            </Share>
-          </ApplyTemplateText>
-          <ApplyTemplateHead>
-            <li>
-              <h4>추천인</h4>
-              <ApplyTemplateText>5,000,000원</ApplyTemplateText>
-            </li>
-            <li>
-              <h4>지원자</h4>
-              <ApplyTemplateText>5,000,000원</ApplyTemplateText>
-            </li>
-          </ApplyTemplateHead>
-          <ApplyTemplateBtn
-            backgroundColor="white"
-            color="#00c8a2"
-          >
-            <i>
-                <FontAwesomeIcon icon={faBookmark} />
-            </i>
-            <p>북마크하기</p>
-          </ApplyTemplateBtn>
-          <ApplyTemplateBtn
-            backgroundColor="#36f"
-            color="white"
-          >
-            <p>지원하기</p>
-          </ApplyTemplateBtn>
-          <LikeForm>
-            <ApplyLikeBtn>
-              <img
-                alt="like"
-                src="/Images/Detail/likeActive.png"
-              />
-              <span>10</span>
-            </ApplyLikeBtn>
-            <LikeUser likeToggle={true} likeuser={true}>
-                <i>
-                    <FontAwesomeIcon icon={faUserCircle} />
-                </i>
-            </LikeUser>
-          </LikeForm>
-        </ApplyTemplateBlock>
-            );
-        }  
+        <>
+
+                <ApplyTemplateBlock >
+                  <ApplyTemplateText>
+                    채용보상금
+                    <Share>
+                        <i>
+                            <FontAwesomeIcon icon={faShareAlt} /> 
+                        </i>
+                    </Share>
+                  </ApplyTemplateText>
+                  <ApplyTemplateHead>
+                    <li>
+                      <h4>추천인</h4>
+                      <ApplyTemplateText>5,000,000원</ApplyTemplateText>
+                    </li>
+                    <li>
+                      <h4>지원자</h4>
+                      <ApplyTemplateText>5,000,000원</ApplyTemplateText>
+                    </li>
+                  </ApplyTemplateHead>
+                  <ApplyTemplateBtn
+                    backgroundColor="white"
+                    color="#00c8a2"
+                  >
+                    <i>
+                        <FontAwesomeIcon icon={faBookmark} />
+                    </i>
+                    <p>북마크하기</p>
+                  </ApplyTemplateBtn>
+                  <ApplyTemplateBtn
+                    backgroundColor="#36f"
+                    color="white"
+                    onClick={handleMove} // '지원하기' 버튼 클릭 시 처리 함수 호출
+                  >
+                    <p>지원하기</p>
+                  </ApplyTemplateBtn>
+                  <LikeForm>
+                    <ApplyLikeBtn>
+                      <img
+                        alt="like"
+                        src="/Images/Detail/likeActive.png"
+                      />
+                      <span>10</span>
+                    </ApplyLikeBtn>
+                    <LikeUser likeToggle={true} likeuser={true}>
+                        <i>
+                            <FontAwesomeIcon icon={faUserCircle} />
+                        </i>
+                    </LikeUser>
+                  </LikeForm>
+                </ApplyTemplateBlock>
+      
+    </>
+  );
+}
 export default ApplyBox; 
         
 const ApplyTemplateBlock = styled.div`
