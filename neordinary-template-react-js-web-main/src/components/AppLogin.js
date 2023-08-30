@@ -35,7 +35,7 @@ const AppLogin = () => {
                   <div>
                     <div>
                       <div className='css-inputname'>
-                        <p><label>이메일 </label></p>
+                        <p><label>이메일</label></p>
                       </div>
                       <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email" classname="css-emailinput" defaultvalue />
                     </div>
