@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function CompanyList({  }) {
 
@@ -65,25 +66,27 @@ function CompanyList({  }) {
 
   return (
     <Container>
-      {recruitCompanydata.map((jo) => (
-        <CompanyListItem
-        >
-          <ImgContainer>
-            <Img src={jo.thumbnail_url} alt="회사 이미지" />
-          </ImgContainer>
-          <ContentBox>
-            <Title>{jo.title}</Title>
-            <CompanyName>{jo.company_name}</CompanyName>
-            <ResponseRate percent={jo.response_rate}>
-              응답률 매우 높음
-            </ResponseRate>
-            <Location>
-              <City>{jo.location}</City>
-              <Area>한국</Area>
-            </Location>
-            <Reward>채용보상금 1,000,000원</Reward>
-          </ContentBox>
-        </CompanyListItem>
+      {recruitCompanydata.map((jo, index) => (
+        <Link key={index} to={`/employment/${index + 1}`}>
+          <CompanyListItem
+          >
+            <ImgContainer>
+              <Img src={jo.thumbnail_url} alt="회사 이미지" />
+            </ImgContainer>
+            <ContentBox>
+              <Title>{jo.title}</Title>
+              <CompanyName>{jo.company_name}</CompanyName>
+              <ResponseRate percent={jo.response_rate}>
+                응답률 매우 높음
+              </ResponseRate>
+              <Location>
+                <City>{jo.location}</City>
+                <Area>한국</Area>
+              </Location>
+              <Reward>채용보상금 1,000,000원</Reward>
+            </ContentBox>
+          </CompanyListItem>
+        </Link>
       ))}
     </Container>
   );
