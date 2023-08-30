@@ -1,0 +1,13 @@
+.idea/*
+.DS_Store
+node_modules/*
+logs/*
+.vscode/*
+.husky/*
+package-lock.json
+yarn.lock
+build/*
+build-dev/*
+build-stage/*
+dist/*
+docs/*

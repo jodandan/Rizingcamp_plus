@@ -11,8 +11,7 @@ padding: 16px;
 font-size: 16px;
 border: none;
 cursor: pointer;
-margin-right: 15px;
-margin-left: 150px;
+
 }
 .Mainbar {
 position: relative;
@@ -43,14 +42,14 @@ background-color: #ffffff;
 }
 
 .Mainbar svg {
-  margin-right: 150px;
+  color: #333;
 }
 
 .menu-list {
 list-style: none;
 display: flex;
 gap: 50px;
-margin-right: 150px;
+margin-right: 50px;
 }
 
 .menu-list a {
@@ -77,7 +76,6 @@ font-size: 15px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  color: red;
 }
 
 .dashboardButton {
