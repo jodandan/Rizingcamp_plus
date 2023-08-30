@@ -33,6 +33,9 @@ const Wrapper = styled.div`
 
 
 function Apply() {
+  const [likeuser, setLikeUser] = useState(false);
+  const [recruitList, setRecruitList] = useState([]);
+  const [likeToggle, setLikeToggle] = useState(true);
 
   const [goToApply, setGoToApply] = useState(false);
   const [hideContent, setHideContent] = useState(false);
@@ -77,6 +80,24 @@ function Apply() {
     }
   }
 
+  const onLikeToggle = () => {
+    const testToken = localStorage.getItem('userToken');
+    setLikeUser(!likeuser);
+    {/* fetch(`${API}/account/like`, {
+      method: 'POST',
+      headers: {
+        Authorization: testToken,
+      },
+      body: JSON.stringify({
+        recruit_id: detailList.id,
+      }),
+    }).then((res) => res.json());
+  }; */}
+  console.log(likeuser, '좋아요눌림.');
+}
+
+
+
   useEffect(() => {
     const list = JSON.parse(localStorage.getItem('submitList'));
     setSubmitList(list);
@@ -101,7 +122,11 @@ function Apply() {
           ) : (
             <ApplyBox
               goToApply={goToApply}
-              handleMove={toggleApplyBox} // ApplyBox 컴포넌트에서 지원하기 버튼을 누르면 SubmitTemaplete 표시로 변경
+              handleMove={toggleApplyBox}
+              recruitList={recruitList}
+              likeuser={likeuser}
+              onLikeToggle={onLikeToggle} 
+              likeToggle={likeToggle}
             />
           )}
         </Wrapper>
