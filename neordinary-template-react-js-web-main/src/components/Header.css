@@ -62,6 +62,7 @@ button{
   background: none;
   cursor: pointer;
   font-family: inherit;
+
 }
 img {
   vertical-align: middle;
@@ -182,10 +183,9 @@ svg:not(:root) {
 .Aside_className___as>ul .leftDivision {
   display: -ms-inline-flexbox;
   display: inline-flex;
+  cursor: pointer;
 }
 
-element.style {
-}
 button, div, h1, h2, h3, h4, h5, h6, input, p, select, span, textarea {
     font-family: inherit;
     font-size: inherit;

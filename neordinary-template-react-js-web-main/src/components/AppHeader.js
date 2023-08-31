@@ -85,9 +85,9 @@ const AppHeader = () => {
                     <div className="Aside_visibleMenu__Dki9n">
                     </div>
                   </aside>
-      </nav>
-    </div>
-      </div>
+              </nav>
+           </div>
+         </div>
       <div className="Padding_padding__">
       </div>
   </Header>
