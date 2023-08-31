@@ -74,23 +74,23 @@ function ApplyBox({
                     <p>지원하기</p>
                   </ApplyTemplateBtn>
                   <LikeForm>
-                  <ApplyLikeBtn onClick={onLikeToggle}>
-                        <img
-                          alt="like"
-                          src={
-                            likeuser && likeToggle
-                              ? '/Images/Detail/likeActive.png'
-                              : '/Images/Detail/like.png'
-                          }
-                        />
-                        <span>{likeuser ? recruitList.length + 1 : recruitList.length}</span>
-                    </ApplyLikeBtn>
-                    <LikeUser likeToggle={likeToggle} likeuser={likeuser}>
-                      {likeuser && likeToggle ? 
-                      <i>
-                            <FontAwesomeIcon icon={faUserCircle} />
-                      </i> : ''}
-                    </LikeUser>
+                      <ApplyLikeBtn onClick={onLikeToggle}>
+                            <img
+                              alt="like"
+                              src={
+                                likeuser && likeToggle
+                                  ? '/Images/Detail/likeActive.png'
+                                  : '/Images/Detail/like.png'
+                              }
+                            />
+                            <span>{likeuser ? recruitList.length + 1 : recruitList.length}</span>
+                      </ApplyLikeBtn>
+                      <LikeUser likeToggle={likeToggle} likeuser={likeuser}>
+                        {likeuser && likeToggle ? 
+                        <i>
+                              <FontAwesomeIcon icon={faUserCircle} />
+                        </i> : ''}
+                      </LikeUser>
                   </LikeForm>
                 </ApplyTemplateBlock>
                 
