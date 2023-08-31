@@ -7,6 +7,10 @@
 div {
     display: block;
 }
+body {
+    height: 100%;
+    overflow: hidden;
+}
 :root {
     --text-spacing-headline: -0.002em;
     --text-spacing-heading: -0.0195em;

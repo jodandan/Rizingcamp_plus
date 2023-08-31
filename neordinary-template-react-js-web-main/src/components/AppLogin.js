@@ -19,7 +19,7 @@ const AppLogin = () => {
   return (
     <body>
       <div id='__next'>
-        <div className='css-main'>
+        <div className='css-main-login'>
           <div className='css-main-login-box'>
             <div className='css-login-box'>
               <div className='css-login-box-m'>
@@ -30,8 +30,8 @@ const AppLogin = () => {
                   </span>
                 </div>
                 <form>
-                  <p><h1 data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-title-f">하나의 계정으로<br />더욱 편리하게</h1></p>
-                  <p><h2 data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-title-s">원티드가 제공하는 서비스를<br />하나의 계정으로 모두 이용할 수 있습니다.</h2></p>
+                  <p><h1 data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-title-p-a">하나의 계정으로<br />더욱 편리하게</h1></p>
+                  <p><h2 data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-title-p-b">원티드가 제공하는 서비스를<br />하나의 계정으로 모두 이용할 수 있습니다.</h2></p>
                   <div>
                     <div>
                       <div className='css-inputname'>
@@ -74,14 +74,18 @@ const AppLogin = () => {
                   </div>
                   <Link to="/join">
                   <button type="button" className="css-remember">
-                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-700)" className="css-8cslw0">계정을 잊으셨나요?<span className="css-1ihsymv">
+                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-700)" className="css-remember-p-a">계정을 잊으셨나요?
+                    <span className="css-1ihsymv">
                       <svg viewBox="0 0 12 12" color="var(--theme-palette-colors-gray-600)" className="css-remember-s">
-                        <path d="M3.34467 9.71967C3.05178 10.0126 3.05178 10.4874 3.34467 10.7803C3.63756 11.0732 4.11244 11.0732 4.40533 10.7803L8.65533 6.53033C8.94822 6.23744 8.94822 5.76256 8.65533 5.46967L4.40533 1.21967C4.11244 0.926777 3.63756 0.926777 3.34467 1.21967C3.05178 1.51256 3.05178 1.98744 3.34467 2.28033L7.06434 6L3.34467 9.71967Z" fill="var(--theme-palette-colors-gray-600)" /></svg></span></p>
+                        <path d="M3.34467 9.71967C3.05178 10.0126 3.05178 10.4874 3.34467 10.7803C3.63756 11.0732 4.11244 11.0732 4.40533 10.7803L8.65533 6.53033C8.94822 6.23744 8.94822 5.76256 8.65533 5.46967L4.40533 1.21967C4.11244 0.926777 3.63756 0.926777 3.34467 1.21967C3.05178 1.51256 3.05178 1.98744 3.34467 2.28033L7.06434 6L3.34467 9.71967Z" fill="var(--theme-palette-colors-gray-600)" />
+                      </svg>
+                    </span>
+                   </p>
                   </button></Link>
                 <hr class="css-line"></hr>
                 <div className="css-privacy">
-                  <a data-testid="Typography" color="var(--theme-palette-colors-gray-700)" href="#" target="_blank" className="css-privacy-f">이용약관</a>
-                  <a data-testid="Typography" color="var(--theme-palette-colors-gray-700)" href="#" target="_blank" className="css-privacy-f">개인정보처리방침</a>
+                  <a data-testid="Typography" color="var(--theme-palette-colors-gray-700)" href="#" target="_blank" className="css-privacy-f-a">이용약관</a>
+                  <a data-testid="Typography" color="var(--theme-palette-colors-gray-700)" href="#" target="_blank" className="css-privacy-f-b">개인정보처리방침</a>
                 </div>
                 <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-from">© Wantedlab, Inc.</p>
                 <div className="css-language">
