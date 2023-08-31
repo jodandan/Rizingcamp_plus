@@ -21,9 +21,11 @@ const AppJoin = () => {
             <div className="css-main-s">
               <div className="css-up">
                 <div className="css-cancel">
+                  <Link to="/login">
                   <button type="button" className="css-cancelBtn">
                       <p data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-cancelBtn-f">취소</p>
                   </button>
+                  </Link>
                 </div>
                 <div className="css-singUp">
                   <p data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-singUp-f">회원가입</p>
