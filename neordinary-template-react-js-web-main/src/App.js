@@ -10,7 +10,7 @@ import Employment from './pages/Employment/Employment'
 import CompanyList from './pages/Employment/CompanyList'
 import Apply from './pages/Apply/Apply'
 
-const loading = <div>화면을 불러오는 중 입니다</div>
+const loading = <div>화면을 불러오는 중</div>
 
 // Containers
 

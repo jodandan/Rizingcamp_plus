@@ -42,7 +42,7 @@ const AppLogin = () => {
                     </div>
                   </div>
                   <button id="subBtn" type="submit" data-method="email" className="css-login-submit">
-                    <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-login-submit-title">이메일로 계속하기
+                    <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-login-submit-title">이메일로 계속
                     </span>
                   </button>
                   <p data-testid="Typography" color="var(--theme-palette-colors-gray-500)" className="css-or">또는</p>
