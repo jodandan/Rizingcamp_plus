@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import packageJson from '../../package.json'
 import "./Login.css";
+import "./Login"
 
 
 const Login = styled.div`
@@ -37,17 +38,11 @@ const AppLogin = () => {
                       <div className='css-inputname'>
                         <p><label>이메일</label></p>
                       </div>
-                      <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email" classname="css-emailinput" defaultvalue />
-                    </div>
-                    <div>
-                      <div className='css-inputname'>
-                        <p><label>비밀번호</label></p>
-                      </div>
-                      <input type="password" placeholder="비밀번호를 입력해주세요." name="password" data-testid="Input_password" classname="css-passwordinput" defaultvalue />
+                      <input id="emailBtn" type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email" classname="css-emailinput" defaultvalue />
                     </div>
                   </div>
-                  <button type="submit" data-method="email" className="css-login-submit">
-                    <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-login-submit-title">이메일로 계속하기
+                  <button id="subBtn" type="submit" data-method="email" className="css-login-submit">
+                    <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-login-submit-title">이메일로 계속
                     </span>
                   </button>
                   <p data-testid="Typography" color="var(--theme-palette-colors-gray-500)" className="css-or">또는</p>
@@ -76,11 +71,12 @@ const AppLogin = () => {
                           <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-kakao-name">Kakao</p>
                     </button>
                   </div>
+                  <Link to="/join">
                   <button type="button" className="css-remember">
                     <p data-testid="Typography" color="var(--theme-palette-colors-gray-700)" className="css-8cslw0">계정을 잊으셨나요?<span className="css-1ihsymv">
                       <svg viewBox="0 0 12 12" color="var(--theme-palette-colors-gray-600)" className="css-remember-s">
                         <path d="M3.34467 9.71967C3.05178 10.0126 3.05178 10.4874 3.34467 10.7803C3.63756 11.0732 4.11244 11.0732 4.40533 10.7803L8.65533 6.53033C8.94822 6.23744 8.94822 5.76256 8.65533 5.46967L4.40533 1.21967C4.11244 0.926777 3.63756 0.926777 3.34467 1.21967C3.05178 1.51256 3.05178 1.98744 3.34467 2.28033L7.06434 6L3.34467 9.71967Z" fill="var(--theme-palette-colors-gray-600)" /></svg></span></p>
-                  </button>
+                  </button></Link>
                 <hr class="css-line"></hr>
                 <div className="css-privacy">
                   <a data-testid="Typography" color="var(--theme-palette-colors-gray-700)" href="#" target="_blank" className="css-privacy-f">이용약관</a>

@@ -108,8 +108,8 @@ const CompanyListItem = styled.div`
   width: 250px;
   height: 355px;
   cursor: pointer;
-  padding-left: 1.5rem;
   margin-top: 1rem;
+  
 `;
 
 const ImgContainer = styled.div`
@@ -125,12 +125,14 @@ const Img = styled.img`
   border-radius: 5px;
   overflow: hidden;
   border: none;
+  padding-left: 1rem;
 `;
 
 const ContentBox = styled.div`
   width: 250px;
   height: 148px;
   padding: 14px 10px;
+  padding-left: 1rem;
 `;
 
 const Title = styled.div`

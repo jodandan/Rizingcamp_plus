@@ -7,6 +7,7 @@ import Slider from '../Slider/Slider'
 import EmploymentButton from '../components/EmploymentButton'
 import styled from 'styled-components'
 import {supportDeviceSize} from '../components/styled'
+import Footer from '../components/Footer'
 
 
 /**
@@ -33,6 +34,7 @@ const DefaultLayout = () => {
       <AppHeader />
       <Slider />
       <EmploymentButton />
+      <Footer />
     </Root>
   )
 }
