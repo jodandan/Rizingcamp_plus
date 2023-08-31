@@ -16,7 +16,7 @@ const AppJoin = () => {
   return (
     <body>
       <div id="__next">
-        <div className="css-main">
+        <div className="css-main-d-a">
           <div className="css-main-f">
             <div className="css-main-s">
               <div className="css-up">

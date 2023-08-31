@@ -1,6 +1,10 @@
 @media only screen and (min-width: 768px){
 
 }
+body {
+    height: 100%;
+    overflow: hidden;
+}
 :root {
     --text-spacing-headline: -0.002em;
     --text-spacing-heading: -0.0195em;
@@ -170,7 +174,7 @@
     border-color: buttonborder;
     border-image: initial;
 }
-.css-main {
+.css-main-login {
     width: 100%;
     height: 100%;
     display: -webkit-box;
@@ -242,7 +246,7 @@
     display: block;
     margin-top: 0em;
 }
-.css-title-f{
+.css-title-p-a{
     color: var(--theme-palette-colors-black-100);
     font-weight: var(--text-weight-subtitle-bold);
     text-align: center;
@@ -253,7 +257,7 @@
     --text-height-subtitle: 32px;
     --text-spacing-subtitle: -0.023em;
 }
-.css-title-s {
+.css-title-p-b {
     color: var(--theme-palette-colors-gray-600);
     font-weight: var(--text-weight-subhead-normal);
     text-align: center;
@@ -261,6 +265,15 @@
     font-size: var(--text-size-subhead);
     line-height: var(--text-height-subhead);
     margin-bottom: 45px;
+}
+.css-remember-p-a {
+    color: var(--theme-palette-colors-gray-700);
+    font-weight: var(--text-weight-subhead-bold);
+    text-align: center;
+    letter-spacing: var(--text-spacing-subhead);
+    font-size: var(--text-size-subhead);
+    line-height: var(--text-height-subhead);
+    margin-top: 30px;
 }
 .css-inputname{
     margin: 17px 0px 7px 0px;
@@ -498,7 +511,7 @@ input{
     flex-direction: row;
     justify-content: center;
 }
-.css-privacy-f {
+.css-privacy-f-a {
     color: var(--theme-palette-colors-gray-700);
     font-weight: var(--text-weight-footnote-bold);
     text-align: center;
