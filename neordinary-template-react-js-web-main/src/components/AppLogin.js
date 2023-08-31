@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import packageJson from '../../package.json'
 import "./Login.css";
+import "./Login"
 
 
 const Login = styled.div`
@@ -37,16 +38,10 @@ const AppLogin = () => {
                       <div className='css-inputname'>
                         <p><label>이메일</label></p>
                       </div>
-                      <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email" classname="css-emailinput" defaultvalue />
-                    </div>
-                    <div>
-                      <div className='css-inputname'>
-                        <p><label>비밀번호</label></p>
-                      </div>
-                      <input type="password" placeholder="비밀번호를 입력해주세요." name="password" data-testid="Input_password" classname="css-passwordinput" defaultvalue />
+                      <input id="emailBtn" type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email" classname="css-emailinput" defaultvalue />
                     </div>
                   </div>
-                  <button type="submit" data-method="email" className="css-login-submit">
+                  <button id="subBtn" type="submit" data-method="email" className="css-login-submit">
                     <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-login-submit-title">이메일로 계속하기
                     </span>
                   </button>
