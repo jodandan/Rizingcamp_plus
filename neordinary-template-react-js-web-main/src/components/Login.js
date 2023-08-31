@@ -1,12 +1,14 @@
-const emailBtn = document.getElementById("emailBtn");
-const subBtn = document.getElementById("subBtn");
+document.addEventListener("DOMContentLoaded", function () {
+  const emailBtn = document.getElementById("emailBtn");
+  const subBtn = document.getElementById("subBtn");
 
-emailBtn.addEventListener('keyup', activeEvent);
-subBtn.addEventListener('click', errorEvent);
+  emailBtn.addEventListener('keyup', activeEvent);
+  subBtn.addEventListener('click', errorEvent);
 
-function activeEvent() {
-  switch(!(emailBtn.value)){
-    case true : subBtn.disabled = true; break;
-    case false : subBtn.disabled = false; break
+  function activeEvent() {
+    switch (!(emailBtn.value)) {
+      case true: subBtn.disabled = true; break;
+      case false: subBtn.disabled = false; break;
+    }
   }
-}
+});
