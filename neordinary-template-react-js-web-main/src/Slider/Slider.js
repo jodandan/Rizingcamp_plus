@@ -35,7 +35,7 @@ function useInterval(callback, delay) {
 
 function Slider() {
     const [windowWidth, windowHeight] = useWindowSize();
-    const items = ['/images/1.jpg', '/images/2.jpg', '/images/3.jpg',]
+    const items = ['/images/1.jpg', '/images/2.jpg', '/images/3.jpg','/images/4.jpg']
     const itemSize = items.length;
     const sliderPadding = 40;
     const sliderPaddingStyle = `0 ${sliderPadding}px`;
