@@ -79,11 +79,18 @@ export default function AppJoin({ navigateToLogin }) {
     navigate('/login');
   };
 
+  const isEmailValid = (email) => {
+    // Regular expression pattern for a simple email validation
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  };
+
 
   // Function to send a membership registration request
   const signUp = () => {
     // Check whether all required information has been entered and essentialChecked is true
     if (
+      userInfo.email && // Check email field
       userInfo.name &&
       userInfo.phone_number &&
       userInfo.password &&
@@ -91,43 +98,46 @@ export default function AppJoin({ navigateToLogin }) {
     ) {
       // Create request body
       const requestBody = {
-        email,
+        email: userInfo.email, // Use the email field
         name: userInfo.name,
         password: userInfo.password,
-        country_code,
+        country_code: '82', // Assuming this is a fixed value
         phone_number: userInfo.phone_number,
         marketing_email: 'Y',
         marketing_push: 'N',
         marketing_sms: 'N',
       };
-  
+
       // Send POST request
-        fetch("http://wanted.ap-northeast-2.elasticbeanstalk.com/users", {
-          method: 'POST',
-          mode: 'cors', // set to CORS request
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestBody), // Replace the semicolon with a comma
-        })
+      fetch('http://wanted.ap-northeast-2.elasticbeanstalk.com/users', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      })
         .then((response) => {
-          // Check if the response status code is 200 OK
+          // Log the response status for debugging
+          console.log('Response Status:', response.status);
+
           if (response.status === 200) {
-            return response.json(); // Parse the JSON response
+            return response.json();
           } else {
-            throw new Error('HTTP Error ' + response.status);
+            // Log the response text for more details on the error
+            return response.text().then((errorText) => {
+              throw new Error('HTTP Error ' + response.status + ': ' + errorText);
+            });
           }
         })
         .then((data) => {
-          // If the request is successful, process it here
           console.log('Successful registration:', data);
-          // When membership registration is successful, perform the desired action
-          // Example: closing modal, notifying user, etc.
+          // Handle successful response, and then navigate to the home page
+          navigate('/login');
         })
         .catch((error) => {
-          // If the request fails, handle it here
           console.error('Sign up failed:', error);
-          // If membership registration fails, perform necessary processing such as notifying the user
+          // Handle the error
         });
     } else {
       // Handle when all required information is not entered or essentialChecked is false
@@ -161,6 +171,17 @@ export default function AppJoin({ navigateToLogin }) {
           {idValidation === false && (
             <ErrorText>이름은 필수정보 입니다.</ErrorText>
           )}
+            <InformationLabel htmlFor="email">이메일</InformationLabel>
+            <UserInput
+              type="email"
+              placeholder="이메일을 입력해 주세요."
+              name="email"
+              onChange={uploadUserInfo}
+              valid={isEmailValid(userInfo.email)} // Validate the email field
+            />
+            {!isEmailValid(userInfo.email) && (
+              <ErrorText></ErrorText>
+            )}
           <InformationLabel htmlFor="phoneNumber">휴대폰 번호</InformationLabel>
           <UserInput
             type="text"
