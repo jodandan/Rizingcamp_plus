@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import packageJson from '../../package.json'
 import './ComSignUp.css';
-
+import signUp from './signUp.js';
 
 
 
@@ -12,8 +12,7 @@ const CompanySignUp = () => {
 
 
     return(
-        <body>
-          <div id="app">
+        <div id="app">
                 <div className="styled__MainAppWrapper-sc-4ve6dq-0 none">
                     <div className="styled__ContentWrapper-sc-1lvffk9-0 daMRDH">
                         <div className="styled__ContentFitWidth-sc-1lvffk9-1 dsvRYi">
@@ -147,8 +146,7 @@ const CompanySignUp = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </body>
+        </div>
 
     );
 }
