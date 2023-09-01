@@ -101,7 +101,7 @@ const Container = styled.div`
   width: 80%;
   height: auto;
   margin-top: 50px;
-  margin-left: 11.5rem;
+  margin-left: 13.5rem;
 `;
 
 const CompanyListItem = styled.div`

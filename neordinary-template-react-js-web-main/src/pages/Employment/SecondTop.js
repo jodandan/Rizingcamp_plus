@@ -10,7 +10,7 @@ import CompanyList from "./CompanyList";
 
 
 const Container = styled.div`
-
+    margin-left: 2rem;
     height: 100px;
 `;
 
