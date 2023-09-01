@@ -24,11 +24,9 @@ const CompanyHeader = () => {
   // const [visible, setVisible] = useState(false)
 
   return (
-  <body>
-  <header>
     <div id="app">
-       <span className="Feature__Hidden_f">
-        <div classname="styled__Warp__All">
+        <span className="Feature__Hidden_f">
+        <div className="styled__Warp__All">
             <nav className="styled__ListWrapper_n">
                 <div className="styled__ListWrapper-d-a">
                 <Link to="/*">
@@ -46,10 +44,9 @@ const CompanyHeader = () => {
                 </div>
             </div>
             </nav>
-         </div>
+        </div>
         </span> 
-    </div>
-    </header>
+    
     <main>
         <div className='css-main-solution'>
             <div className='css-main-solution-a'>
@@ -70,14 +67,12 @@ const CompanyHeader = () => {
                                 </video>
                                 </div>
                         </section>
-                        </section>
-
+                    </section>
                 </div>
             </div>
         </div>
-
     </main>
-    </body>
+    </div>
   );
 }
 
