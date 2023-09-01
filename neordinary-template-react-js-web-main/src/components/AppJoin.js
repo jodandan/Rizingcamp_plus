@@ -1,202 +1,389 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link, useNavigate } from 'react-router-dom'
-import packageJson from '../../package.json'
-import { ReactComponent as NeordinaryLogo } from '../assets/neordinary-logo.svg'
-import './Join.css';
+
+import {React , useState} from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
+export default function AppJoin({ navigateToLogin }) {
+  // State variables
+  const [agreedChecked, setAgreedChecked] = useState({
+    entireChecked: false,
+    essentialChecked: false,
+    optionalChecked: false,
+  });
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    phone_number: '',
+    password: '',
+    pwdCheckValue: '',
+  });
+  const [idValidation, setIdValidation] = useState(true);
+  const [phoneValidation, setPhoneValidation] = useState(true);
+  const [pwdValidation, setPwdValidation] = useState(true);
+  const [pwdReValidation, setPwdReValidation] = useState(true);
+  const [existPhoneNumber, setExistPhoneNumber] = useState(false);
+
+  const navigate = useNavigate();
+
+  // Email and country code are fixed values
+  const email = 'wanted123@gmail.com';
+  const country_code = '82';
+
+  // URL for API call
+  const apiUrl = 'wanted.ap-northeast-2.elasticbeanstalk.com/user';
+
+  // Function to toggle the "Entire Agreement" checkbox
+  const selectAllCheckedBox = () => {
+    setAgreedChecked((prevState) => ({
+      ...prevState,
+      entireChecked: !prevState.entireChecked,
+    }));
+  };
+
+  // Function to toggle the "Essential Information" checkbox
+  const selectEssentialCheckBox = () => {
+    setAgreedChecked((prevState) => ({
+      ...prevState,
+      essentialChecked: !prevState.essentialChecked,
+    }));
+  };
+
+  // Function to toggle the "Optional Information" checkbox
+  const selectOptionalCheckBox = () => {
+    setAgreedChecked((prevState) => ({
+      ...prevState,
+      optionalChecked: !prevState.optionalChecked,
+    }));
+  };
+
+  // Function to upload user information
+  const uploadUserInfo = (e) => {
+    const { name, value } = e.target;
+    setUserInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  // Function to check validation of required fields
+  const checkValidation = () => {
+    setIdValidation(!!userInfo.name);
+    setPhoneValidation(/^\d{10,11}$/.test(userInfo.phone_number));
+    setPwdValidation(userInfo.password.length >= 6);
+    setPwdReValidation(userInfo.password === userInfo.pwdCheckValue);
+  };
+
+  const handleCloseAndNavigate = () => {
+    // Close the modal (you can implement this part)
+    
+    // Navigate to the login page
+    navigate('/login');
+  };
 
 
-const Join = styled.div`
-  font-family: inherit;
-`;
-const AppJoin = () => {
-
-
+  // Function to send a membership registration request
+  const signUp = () => {
+    // Check whether all required information has been entered and essentialChecked is true
+    if (
+      userInfo.name &&
+      userInfo.phone_number &&
+      userInfo.password &&
+      agreedChecked.essentialChecked
+    ) {
+      // Create request body
+      const requestBody = {
+        email,
+        name: userInfo.name,
+        password: userInfo.password,
+        country_code,
+        phone_number: userInfo.phone_number,
+        marketing_email: 'Y',
+        marketing_push: 'N',
+        marketing_sms: 'N',
+      };
+  
+      // Send POST request
+        fetch("http://wanted.ap-northeast-2.elasticbeanstalk.com/users", {
+          method: 'POST',
+          mode: 'cors', // set to CORS request
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestBody), // Replace the semicolon with a comma
+        })
+        .then((response) => {
+          // Check if the response status code is 200 OK
+          if (response.status === 200) {
+            return response.json(); // Parse the JSON response
+          } else {
+            throw new Error('HTTP Error ' + response.status);
+          }
+        })
+        .then((data) => {
+          // If the request is successful, process it here
+          console.log('Successful registration:', data);
+          // When membership registration is successful, perform the desired action
+          // Example: closing modal, notifying user, etc.
+        })
+        .catch((error) => {
+          // If the request fails, handle it here
+          console.error('Sign up failed:', error);
+          // If membership registration fails, perform necessary processing such as notifying the user
+        });
+    } else {
+      // Handle when all required information is not entered or essentialChecked is false
+      alert('Please enter all required information and agree.');
+    }
+  };
 
   return (
-    <body>
-      <div id="__next">
-        <div className="css-main-d-a">
-          <div className="css-main-f">
-            <div className="css-main-s">
-              <div className="css-up">
-                <div className="css-cancel">
-                  <Link to="/login">
-                  <button type="button" className="css-cancelBtn">
-                      <p data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-cancelBtn-f">취소</p>
-                  </button>
-                  </Link>
-                </div>
-                <div className="css-singUp">
-                  <p data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-singUp-f">회원가입</p>
-                </div>
-                <div className="css-none">
-                </div>
-              </div>
-              <div className="css-down">
-                <form>
-                  <div>
-                    <div className="css-input">
-                      <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" htmlFor="email" className="css-input-la">이메일</label>
-                    </div>
-                    <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email" className="css-username-input" defaultValue disabled />
-                  </div>
-                  <div className="css-input">
-                    <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" htmlFor="username" className="css-username-f">이름</label>
-                  </div>
-                  <input type="text" placeholder="이름을 입력해주세요." name="username" data-testid="Input_username" className="css-username-s" defaultValue />
-                  <div className="css-input">
-                    <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" htmlFor="mobile" className="css-mobile">휴대폰 번호</label>
-                  </div>
-                  <div>
-                    <div className="css-Country">
-                      <select className="css-Country-f">
-                        <option value="KR">South Korea +82</option>
-                        <option value="JP">Japan +81</option>
-                        <option value="TW">Taiwan +886</option>
-                        <option value="HK">Hong Kong +852</option>
-                        <option value="SG">Singapore +65</option>
-                        <option value="AF">Afghanistan +93</option>
-                        <option value="AL">Albania +355</option>
-                        <option value="DZ">Algeria +213</option>
-                        <option value="AO">Angola +244</option>
-                        <option value="AR">Argentina +54</option>
-                        <option value="AM">Armenia +374</option>
-                        <option value="AW">Aruba +297</option>
-                        <option value="AU">Australia +61</option>
-                        <option value="AT">Austria +43</option>
-                        <option value="AZ">Azerbaijan +994</option>
-                        <option value="BH">Bahrain +973</option>
-                        <option value="BD">Bangladesh +880</option>
-                        <option value="BY">Belarus +375</option>
-                        <option value="BE">Belgium +32</option>
-                        <option value="BZ">Belize +501</option>
-                        <option value="BJ">Benin +229</option>
-                        <option value="BT">Bhutan +975</option>
-                        <option value="BO">Bolivia +591</option>
-                        <option value="BW">Botswana +267</option>
-                        <option value="BR">Brazil +55</option>
-                        <option value="BN">Brunei +673</option>
-                        <option value="BG">Bulgaria +359</option>
-                        <option value="BF">Burkina Faso +226</option>
-                        <option value="KH">Cambodia +855</option>
-                        <option value="CM">Cameroon +237</option>
-                        <option value="CA">Canada +1</option>
-                        <option value="CL">Chile +56</option>
-                        <option value="CN">China +86</option>  
-                      </select>
-                      <div className="css-Country-s">
-                        <span className="css-Country-t">
-                          <svg viewBox="0 0 10 6" className="css-Country-svg">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M5 3.93934L1.28033 0.21967C0.987437 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987437 0.21967 1.28033L4.46967 5.53033C4.76256 5.82322 5.23744 5.82322 5.53033 5.53033L9.78033 1.28033C10.0732 0.987437 10.0732 0.512563 9.78033 0.21967C9.48744 -0.0732233 9.01256 -0.0732233 8.71967 0.21967L5 3.93934Z" fill="var(--theme-palette-colors-gray-900)" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                    <div className="css-mobile-num">
-                      <input type="text" placeholder="(예시) 01013245768" name="mobile" data-testid="Input_mobile" className="css-Input_mobile" defaultValue />
-                      <button type="button" data-testid="Button" className="css-numBtn" disabled>
-                        <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-numBtn-re">인증번호 받기</span>
-                      </button>
-                    </div>
-                    <div className="css-authCode">
-                      <input type="text" placeholder="인증번호를 입력해주세요." name="authCode" readOnly className="css-authCode-f" defaultValue />
-                    </div>
-                  </div>
-                  <div className="css-accept">
-                    <div className="css-accept-f">
-                    </div>
-                    <input type="checkbox" name="is_agree_all" className="css-checkbox" />
-                    <div className="css-accept-s">
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-900)" className="css-accept-t">전체 동의</p>
-                    </div>
-                  </div>
-                  <hr className="css-line" />
-                  <div className="css-accept-age">
-                    <div className="css-accept-age-f">
-                    </div>
-                    <input type="checkbox" name="is_above_14" data-testid="TermsOption_checkbox_is_above_14" className="css-checkbox-age" />
-                    <div className="css-accept-age-p">
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-accept-age-pn">만 14세 이상입니다. (필수)</p>
-                  </div>
-                  </div>
-                  <div className="css-accept-age">
-                    <div className="css-accept-age-f">
-                    </div>
-                    <input type="checkbox" name="is_terms_conditions" data-testid="TermsOption_checkbox_is_terms_conditions" className="css-checkbox-age" />
-                    <div className="css-accept-age-p">
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-accept-age-pn">원티드 이용약관 동의 (필수)</p>
-                    </div>
-                    <a data-testid="Typography" color="var(--theme-palette-colors-gray-600)" href="https://id.wanted.jobs/terms/ko" target="_blank" className="css-accept-more">자세히</a>
-                  </div>
-                  <div className="css-accept-age">
-                    <div className="css-accept-age-f">
-                    </div>
-                    <input type="checkbox" name="is_collect_information" data-testid="TermsOption_checkbox_is_collect_information" className="css-checkbox-age" />
-                    <div className="css-accept-age-p">
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-accept-age-pn">원티드 개인정보 수집 및 이용 동의 (필수)</p>
-                    </div>
-                    <a data-testid="Typography" color="var(--theme-palette-colors-gray-600)" href="https://id.wanted.jobs/privacy/ko" target="_blank" className="css-accept-more">자세히</a>
-                  </div>
-                  <div className="css-accept-age">
-                    <div className="css-accept-age-f">
-                    </div>
-                    <input type="checkbox" name="is_accept_event_all" data-testid="TermsOption_checkbox_is_accept_event_all" className="css-checkbox-age" />
-                    <div className="css-accept-age-p">
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-accept-age-pn">채용 소식, 커리어 콘텐츠, 이벤트 등 원티드 맞춤 정보 받기</p>
-                    </div>
-                  </div>
-                  <div className="css-check-a">
-                    <label className="css-check-b">
-                      <input data-testid="TermsCheck_checkicon_accept_marketing_email" name="accept_marketing_email" type="checkbox" />
-                      <span className="css-check-c">
-                        <svg viewBox="0 0 12 8" className="css-check-d">
-                          <path d="M1.5 4L4.5 7L10.5 1" stroke="var(--theme-palette-colors-gray-300)" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          </path>
-                        </svg>
-                      </span>
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-check-e">이메일</p>
-                    </label>
-                    <label className="css-check-b">
-                      <input data-testid="TermsCheck_checkicon_accept_marketing_push" name="accept_marketing_push" type="checkbox" />
-                      <span className="css-check-c">
-                        <svg viewBox="0 0 12 8" className="css-check-d">
-                          <path d="M1.5 4L4.5 7L10.5 1" stroke="var(--theme-palette-colors-gray-300)" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-check-e">앱 푸시</p>
-                    </label>
-                    <label className="css-check-b">
-                      <input data-testid="TermsCheck_checkicon_accept_marketing_sms" name="accept_marketing_sms" type="checkbox" />
-                      <span className="css-check-c">
-                        <svg viewBox="0 0 12 8" className="css-check-d">
-                          <path d="M1.5 4L4.5 7L10.5 1" stroke="var(--theme-palette-colors-gray-300)" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          </path>
-                        </svg>
-                      </span>
-                      <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" className="css-check-e">문자 메시지</p>
-                    </label>
-                  </div>
-                  <div className="css-JoinBtn">
-                    <div className="css-JoinBtn-a">
-                    </div>
-                    <div className="css-JoinBtn-b">
-                    </div>
-                    <button type="submit" data-testid="Button" className="css-submitBtn" disabled>
-                      <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" className="css-submitBtn-s">가입하기</span>
-                    </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <>
+      <SignUpModal>
+        <SecondModalHeader>
+          <strong>회원 가입</strong>
+          <SecondeExitButton>
+            <i
+              className="fas fa-times"
+              onClick={handleCloseAndNavigate}
+            />
+          </SecondeExitButton>
+        </SecondModalHeader>
+        <SecondModalBody
+          onKeyUp={() => agreedChecked.essentialChecked && checkValidation()}
+        >
+          <InformationLabel htmlFor="name">이름</InformationLabel>
+          <UserInput
+            type="text"
+            placeholder="이름을 입력해 주세요."
+            name="name"
+            onChange={uploadUserInfo}
+            valid={idValidation}
+          />
+          {idValidation === false && (
+            <ErrorText>이름은 필수정보 입니다.</ErrorText>
+          )}
+          <InformationLabel htmlFor="phoneNumber">휴대폰 번호</InformationLabel>
+          <UserInput
+            type="text"
+            placeholder="(예시) 01034567890"
+            name="phone_number"
+            onChange={uploadUserInfo}
+            valid={phoneValidation}
+          />
+          {phoneValidation === false && (
+            <ErrorText>올바른 연락처 형식이 아닙니다.</ErrorText>
+          )}
+          {existPhoneNumber && (
+            <ErrorText>이미 존재하는 전화번호입니다.</ErrorText>
+          )}
+          <InformationLabel htmlFor="password">비밀번호</InformationLabel>
+          <UserInput
+            type="password"
+            placeholder="비밀번호를 6자 이상 입력해 주세요."
+            name="password"
+            onChange={uploadUserInfo}
+            valid={pwdValidation}
+          />
+          {pwdValidation === false && (
+            <ErrorText>비밀번호를 6자 이상 입력해 주세요.</ErrorText>
+          )}
+          <InformationLabel htmlFor="checkPassword">
+            비밀번호 확인
+          </InformationLabel>
+          <UserInput
+            type="password"
+            placeholder="비밀번호를 다시 한번 입력해 주세요."
+            name="pwdCheckValue"
+            onChange={uploadUserInfo}
+            valid={pwdReValidation}
+          />
+          {pwdReValidation === false && (
+            <ErrorText>비밀번호가 일치하지 않습니다.</ErrorText>
+          )}
+          <UserCheckContainerBorder>
+            <CheckBox
+              name="entireChecked"
+              checked={agreedChecked.entireChecked}
+              onClick={selectAllCheckedBox}
+            />
+            전체 동의
+          </UserCheckContainerBorder>
+          <UserCheckContainer>
+            <CheckBox
+              name="essentialChecked"
+              checked={agreedChecked.essentialChecked}
+              onClick={selectEssentialCheckBox}
+            />
+            <GraySpan>개인정보 수집 및 이용 동의(필수)</GraySpan>
+          </UserCheckContainer>
+          <UserCheckContainer>
+            <CheckBox
+              name="optionalChecked"
+              checked={agreedChecked.optionalChecked}
+              onClick={selectOptionalCheckBox}
+            />
+            <GraySpan>이벤트 소식 등 알림 정보 받기</GraySpan>
+          </UserCheckContainer>
+        <StartingSignUpBox
+          agreedChecked={agreedChecked}
+          onClick={signUp} // 회원가입 버튼 클릭 시 signUp 함수 호출
 
-    </body>
-
-    );
+        >
+          회원가입하기
+        </StartingSignUpBox>
+        </SecondModalBody>
+      </SignUpModal>
+      <SecondTranparentBackground
+        onClick={handleCloseAndNavigate}
+      />
+    </>
+  );
 }
 
+const SignUpModal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  overflow-y: auto;
+  border-radius: 5px;
+  background-color: #fff;
+  z-index: 14;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: #FFFFFF;
+  border: 1px solid #e1e2e3;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
-export default AppJoin;
+ const InformationLabel = styled.label`
+  color: #767676;
+  font-size: 14px;
+  font-weight: normal;
+`;
+
+
+const SecondTranparentBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 13;
+  background-color: #f7f7f7;
+`;
+
+const SecondModalHeader = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 16px 20px;
+
+  strong {
+    position: relative;
+    color: #333;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+`;
+
+const SecondeExitButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  i {
+    position: relative;
+    top: 4px;
+    left: 130px;
+    font-size: 20px;
+    color: rgb(153, 153, 153);
+    cursor: pointer;
+  }
+`;
+
+const SecondModalBody = styled.section`
+  padding: 20px;
+
+  div:nth-child(9) {
+    height: auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 15px;
+  }
+`;
+
+const UserInput = styled.input`
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid ${(props) => (props.valid === false ? 'red' : '#e1e2e3')};
+  background-color: #fff;
+  font-size: 15px;
+  color: #333;
+
+  :focus {
+    border: 1px solid ${(props) => (props.valid === false ? 'red' : '#e1e2e3')};
+  }
+`;
+
+const UserCheckContainer = styled.div`
+  width: 100%;
+  height: 21px;
+  margin-bottom: 2px;
+`;
+
+const CheckBox = styled.input.attrs((props) => ({
+  type: 'checkBox',
+}))`
+  margin-right: 10px;
+`;
+
+const StartingSignUpBox = styled.button.attrs((props) => ({
+  type: 'submit',
+}))`
+  width: 100%;
+  height: 54px;
+  margin-top: 30px;
+  border: 0;
+  border-radius: 27px;
+  background-color: ${(props) =>
+    props.agreedChecked.essentialChecked ? '#36f' : '#f2f4f7'};
+  color: ${(props) =>
+    props.agreedChecked.essentialChecked ? '#fff' : ' #cacaca'};
+  font-size: 16px;
+  font-weight: bold;
+  cursor: ${(props) =>
+    props.agreedChecked.essentialChecked ? 'pointer' : 'not-allowed'};
+`;
+
+const GraySpan = styled.span`
+  color: #939393;
+`;
+
+const ErrorText = styled.div`
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 12px;
+  color: red;
+  margin-top: -10px;
+  margin-bottom: 10px;
+`;
+
+const UserCheckContainerBorder = styled(
+  UserCheckContainer.withComponent('div')
+)`
+  height: auto;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ececec;
+  margin-bottom: 15px;
+`;
