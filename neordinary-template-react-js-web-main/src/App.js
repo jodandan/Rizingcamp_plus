@@ -5,6 +5,7 @@ import AppLogin from './components/AppLogin'
 import AppJoin from './components/AppJoin'
 import AppLoginPw from './components/AppLoginPw'
 import CompanyHeader from './components/CompanyHeader'
+import CompanySignUp from './components/CompanySignUp'
 import DefaultLayout from './layout/DefaultLayout'
 import EmploymentButton from './components/EmploymentButton'
 import Employment from './pages/Employment/Employment'
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/join" element={<AppJoin />}  />
           <Route path="/loginpw" element={<AppLoginPw />}  />
           <Route path="/company" element={<CompanyHeader />}  />
+          <Route path="/signup" element={<CompanySignUp />}  />
           <Route path="/employment/:companyId" element={<Apply />}  />
           <Route path="/Profile" element={<Profile />}  />
 
