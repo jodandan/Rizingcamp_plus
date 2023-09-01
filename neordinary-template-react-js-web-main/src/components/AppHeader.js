@@ -72,9 +72,11 @@ const AppHeader = () => {
                           <button className="signUpButton" type="button" data-attribute-id="gnb" data-gnb-kind="signupLogin">회원가입/로그인</button>
                         </Link>
                       </li>
+                      <Link to="/company">
                       <li className="mdMoreVisible leftDivision" data-attribute-id="gnb" data-gnb-kind="forEmployers">
                         <a className="dashboardButton" href="/dashboard">기업 서비스</a>
                       </li>
+                      </Link>
                       <li className="Aside_visibleMenu__Dki9n">
                         <button className="menuButton" type="button" data-attribute-id="gnb" data-gnb-kind="photo">
                           <svg width={18} height={18} viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z" /></svg>
