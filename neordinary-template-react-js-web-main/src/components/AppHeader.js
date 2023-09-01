@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import packageJson from '../../package.json'
@@ -17,11 +17,29 @@ const Header = styled.div`
   
 `;
 const AppHeader = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if access tokens exist in local storage
+    const access_token = localStorage.getItem('access_token');
+    const refresh_token = localStorage.getItem('refresh_token');
+
+    if (access_token && refresh_token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  const getButtonText = () => {
+    if (isLoggedIn) {
+      return "마이페이지";
+    } else {
+      return "회원가입/로그인";
+    }
+  };
 
 
-  // const dispatch = useDispatch()
-  // const sidebarShow = useSelector((state) => state.sidebarShow)
-  // const [visible, setVisible] = useState(false)
 
   return (
     <Header>
@@ -89,9 +107,22 @@ const AppHeader = () => {
               </nav>
            </div>
          </div>
-      <div className="Padding_padding__">
-      </div>
-  </Header>
+         <div className="Padding_padding__"></div>
+         {isLoggedIn ? (
+        <Link to="/profile">{getButtonText()}</Link>
+      ) : (
+        <Link to="/login">
+          <button
+            className="signUpButton"
+            type="button"
+            data-attribute-id="gnb"
+            data-gnb-kind="signupLogin"
+          >
+            {getButtonText()}
+          </button>
+        </Link>
+      )}
+      </Header>
 
       );
 }
