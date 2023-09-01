@@ -5,7 +5,7 @@ import SubmitTemaplete from './SubmitTemaplete.js'; // Submit 컴포넌트를 im
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareAlt, faBookmark, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-
+import LikeListModal from './LikeListModal';
 
 
 
@@ -22,6 +22,24 @@ function ApplyBox({
     modal,
     recruitList,
 }) {
+  const [showLikeModal, setShowLikeModal] = useState(false);
+  const [likedUsers, setLikedUsers] = useState([]);
+
+  const handleLikeModalOpen = () => {
+    // 여기에서 실제로 좋아요 목록을 조회하고 데이터를 가져옵니다.
+    const likedUsers = [
+      { id: 1, name: '사용자 1' },
+      { id: 2, name: '사용자 2' },
+      // 조회한 사용자 데이터를 가져옵니다.
+    ];
+  
+    setShowLikeModal(true);
+    setLikedUsers(likedUsers); // 가져온 데이터를 상태에 저장합니다.
+  };
+  const handleLikeModalClose = () => {
+    setShowLikeModal(false);
+  };
+
     const [showSubmit, setShowSubmit] = useState(false); // 상태 추가
 
     // useEffect(() => {
@@ -85,12 +103,18 @@ function ApplyBox({
                             />
                             <span>{likeuser ? recruitList.length + 1 : recruitList.length}</span>
                       </ApplyLikeBtn>
-                      <LikeUser likeToggle={likeToggle} likeuser={likeuser}>
+                      <LikeUser onClick={handleLikeModalOpen} likeToggle={likeToggle} likeuser={likeuser}>
                         {likeuser && likeToggle ? 
                         <i>
                               <FontAwesomeIcon icon={faUserCircle} />
                         </i> : ''}
                       </LikeUser>
+                      {showLikeModal && (
+                        <LikeListModal
+                          onClose={handleLikeModalClose}
+                          likedUsers={likedUsers} // 조회한 데이터를 모달에 전달합니다.
+                        />
+                      )}
                   </LikeForm>
                 </ApplyTemplateBlock>
                 
@@ -231,6 +255,8 @@ const ApplyLikeBtn = styled.button`
     height: 15px;
     bottom: 1px;
     margin-right: 10px;
+
+    
   }
   i {
     position: absolute;
@@ -241,7 +267,7 @@ const ApplyLikeBtn = styled.button`
 const LikeUser = styled.div`
   display: flex;
   width: 30px;
-  height: 30px;
+  height: 40px;
   position: relative;
   img {
     width: 26px;
@@ -262,7 +288,7 @@ const LikeUser = styled.div`
 const LikeForm = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 24px;
+  margin-top: 15px;
   position: relative;
 `;
 

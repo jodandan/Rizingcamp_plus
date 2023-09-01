@@ -22,6 +22,7 @@ const Container = styled.div`
   width: 100%;
   height: 24px;
   margin-bottom: 12px;
+  margin-left: 2rem;
 `;
 
 const GotoBookMark = styled.button`

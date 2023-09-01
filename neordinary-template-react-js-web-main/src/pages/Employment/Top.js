@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Dropdown from './Dropdown';
 
 const CategoryBox = styled.div`
-
+    margin-left: 2.5rem;
     display: flex;
     position: relative; 
     margin-top: 2rem;
