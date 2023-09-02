@@ -2,8 +2,13 @@ import React from 'react'
 import AppHeader from '../components/AppHeader'
 import AppContent from '../components/AppContent'
 import AppFooter from '../components/AppFooter'
+// import AutoSlider from '../components/AutoSlider'
+import Slider from '../Slider/Slider'
+import EmploymentButton from '../components/EmploymentButton'
 import styled from 'styled-components'
 import {supportDeviceSize} from '../components/styled'
+import Footer from '../components/Footer'
+
 
 /**
  * 기본 레이아웃
@@ -27,17 +32,15 @@ const DefaultLayout = () => {
   return (
     <Root>
       <AppHeader />
-      <AppContent />
-      <AppFooter />
+      <Slider />
+      <EmploymentButton />
+      <Footer />
     </Root>
   )
 }
 
 const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 1080px;
-  background-color: green;
+  padding-top: 25px;
 
   @media all and (max-width: ${supportDeviceSize}px) {
     width: 100vw;

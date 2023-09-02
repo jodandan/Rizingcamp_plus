@@ -1,0 +1,222 @@
+body{
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    background-color: #f8f8f8;
+    line-height: 1.42857143;
+    font-family: Pretendard Variable,Pretendard JP Variable,-apple-system,system-ui,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,Apple SD Gothic Neo,Nanum Gothic,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+}
+:root {
+    --nav-height: 50px;
+}
+button, div, h1, h2, h3, h4, h5, h6, input, p, select, span, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.NavBar_className__menubar{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+    z-index: 800;
+}
+.MainBar_MainBar__f{
+  position: relative;
+  max-width: 1060px;
+  height: 50px;
+  margin: 0 auto;
+}
+.MainBar_MainBar_nav__f{
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.MainBar_MainBar_nav__top__f{
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -2px;
+  margin-right: 15px;
+}
+.MainBar_MainBar_nav_top_logo__f{
+  display: -ms-flexbox;
+  display: flex;
+}
+.MainBar_hamberger__menu{
+  margin-top: -2px;
+  margin-right: 15px;
+}
+
+button{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+
+}
+img {
+  vertical-align: middle;
+  verflow-clip-margin: content-box;
+  overflow: clip;
+}
+a {
+  font-family: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+.MainBar_MainBar_logo__a{
+  display: block;
+}
+.MainBar_MainBar_logo__a svg{
+  color: #333
+}
+a, a:active, a:hover, a:visited {
+  color: inherit;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+}
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: inherit;
+}
+svg {
+  width: 74;
+  height: 21;
+}
+svg:not(:root) {
+  overflow-clip-margin: content-box;
+  overflow: hidden;
+}
+.SignUpButton{
+
+}
+.MainBar_MainBar_nav_top__f button[id=SignupBtn]{
+  display: inline-block;
+}
+.MainBar_MainBar_nav_top__f>button[id=SignupBtn]{
+  display: none;
+    color: #36f;
+    font-size: 14px;
+    line-height: 32px;
+    height: 34px;
+    border: 1px solid #36f;
+    border-radius: 17px;
+    padding: 0 14px;
+}
+.Menu_className__main{
+  height: inherit;
+  text-align: center;
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+.Menu_className__main li{
+  height: inherit;
+  display: inline-block;
+  position: relative;
+}
+.Menu_className__main li a{
+  position: relative;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    padding: 15px;
+    display: inline-block;
+    color: #333
+}
+.Aside_className___as{
+  height: 100%;
+  padding: 10px 0;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+.Aside_className___as>ul{
+  height: 100%;
+  margin: 0;
+}
+.Aside_className___as>ul li{
+  position: relative;
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.Aside_className___as>ul li .searchButton {
+  position: relative;
+  margin-top: 5px;
+}
+svg{
+  width: 18;
+  height: 18;
+}
+svg:not(:root) {
+  overflow-clip-margin: content-box;
+  overflow: hidden;
+}
+.Aside_className___as>ul li .signUpButton {
+  margin-right: 6px;
+  line-height: 1.4;
+}
+.Aside_className___as>ul li>* {
+  height: 100%;
+  padding: 0 5px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+  line-height: 1;
+}
+.Aside_className___as>ul .leftDivision {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+button, div, h1, h2, h3, h4, h5, h6, input, p, select, span, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: inherit;
+}
+div {
+    display: block;
+}
+.Aside_className___as>ul li .dashboardButton {
+  font-size: 13px;
+  color: #666;
+  line-height: 30px;
+  height: 30px;
+  border: 1px solid #e1e2e3;
+  border-radius: 15px;
+  padding: 0 10px;
+  margin-left: 15px;
+  font-weight: 400;
+}
+.Padding_padding__{
+  height: 50px;
+}
