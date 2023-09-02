@@ -5,10 +5,10 @@ import './ComSignUp.css';
 function CompanySignUp() {
     const [companyName, setCompanyName] = useState('');
     const [registrationNumber, setRegistrationNumber] = useState('');
-    const [countryKey, setCountryKey] = useState('kr');
-    const [locationKey, setLocationKey] = useState('seoul');
-    const [industryId, setIndustryId] = useState('9927');
-    const [size, setSize] = useState('1~4');
+    const [countryKey, setcountryKey] = useState('kr');
+    const [locationKey, setlocationKey] = useState('seoul');
+    const [industryId, setindustryId] = useState('9927');
+    const [size, setsize] = useState('1~4');
 
     const navigate = useNavigate();
 
@@ -22,31 +22,32 @@ function CompanySignUp() {
     const apiUrl = 'http://wanted.ap-northeast-2.elasticbeanstalk.com';
     const companiesEndpoint = '/companies';
 
+  
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const url = `${apiUrl}${companiesEndpoint}`;
     
-      const data = {
-        name: companyName,
-        business_reg_code: registrationNumber,
-        nation: countryKey,
-        region: locationKey,
-        industry: industryId,
-        employee_count: size,
-      };
-    const url = `${apiUrl}${companiesEndpoint}`;
-
-      try {
+        const data = {
+            name: companyName,
+            business_reg_code: registrationNumber,
+            nation: countryKey,
+            region: locationKey,
+            industry: industryId,
+            employee_count: size,
+        };
+        try {
         const response = await fetch(url, {
           method: 'POST',
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYmp3MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY5MzY0MzQ2NCwiZXhwIjoxNjkzNjQ3MDY0LCJzdWIiOiJ6eGN2YjEyMzRAbmF2ZXIuY29tIiwiaWQiOjI2fQ.tw9frS9PxVpHQtderyI-qE8WinXwcdM_5rf7X9HNIw8',
           },
           body: JSON.stringify(data),
         });
         
 
-        if (response.ok) {
+        if (response.status==200) {
         const responseData = await response.json();
         console.log('서버 응답:', responseData);
         navigate('/company');
