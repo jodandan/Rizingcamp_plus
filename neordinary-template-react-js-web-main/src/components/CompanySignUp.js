@@ -38,10 +38,10 @@ function CompanySignUp() {
         try {
         const response = await fetch(url, {
           method: 'POST',
-          credentials: 'include',
+
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoYmp3MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY5MzY0MzQ2NCwiZXhwIjoxNjkzNjQ3MDY0LCJzdWIiOiJ6eGN2YjEyMzRAbmF2ZXIuY29tIiwiaWQiOjI2fQ.tw9frS9PxVpHQtderyI-qE8WinXwcdM_5rf7X9HNIw8',
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ6eGN2YjEyMzRAbmF2ZXIuY29tIiwiaXNzIjoiaGJqdzEyM0BnbWFpbC5jb20iLCJpYXQiOjE2OTM2NDM0NjQsImV4cCI6MTY5NDg1MzA2NCwiaWQiOjI2fQ.YS9icfEGEf37c5x-OLa5MHPI3BwEUb97_xQlQR6ZSSU',
           },
           body: JSON.stringify(data),
         });

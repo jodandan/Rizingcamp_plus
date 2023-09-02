@@ -368,9 +368,11 @@ div#app {
 }
 div {
     display: block;
+    
 }
 body {
     background: var(--theme-palette-background-normal-alternative);
+    overflow-y: auto;
     font-family: Pretendard, "Pretendard JP", "Pretendard Std", -apple-system, system-ui, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 .styled__Warp__All {
@@ -378,7 +380,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow-x: auto;
+    overflow-y: auto;
 }
 .styled__ListWrapper_n {
     display: flex;
@@ -491,7 +493,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 }
 
 .css-main-solution {
-    overflow-x: auto;
+    overflow-y: auto;
     min-height: 100%;
     display: flex;
     flex: 1 0 auto;
@@ -585,8 +587,8 @@ h1, h2, h3, h4, h5, h6, ul, p {
     line-height: 26px;
     letter-spacing: -0.002em;
     font-weight: 600;
-    display: inline;
-    text-align: left;
+    text-align: center;
+    width: 90px;
     color: var(--theme-palette-static-white);
 }
 .styled__ListWrapper-main-img {
@@ -601,7 +603,7 @@ h1, h2, h3, h4, h5, h6, ul, p {
     flex-shrink: 0;
     position: relative;
     border-radius: 15px 15px 0px 0px;
-    overflow: scroll;
+
 }
 .styled__ListWrapper-main-img video {
     position: absolute;
