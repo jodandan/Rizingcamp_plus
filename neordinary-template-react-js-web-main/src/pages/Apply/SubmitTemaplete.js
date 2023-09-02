@@ -5,7 +5,7 @@ import UploadFile from './UploadFile';
 import Input_list from './Input_list';
 import { useNavigate } from 'react-router-dom';
 
-function SubmitTemaplete({
+function SubmitTemplate({
   setSubmitList,
   detailList,
   goToApply,
@@ -18,12 +18,8 @@ function SubmitTemaplete({
   hideContent,
 }) {
   const [selectedFile, setSelectedFile] = useState([]);
-
   const [submit, setSubmit] = useState(false);
-
   const [currentColor, setCurrentColor] = useState([]);
-
-
 
   const inputValid =
     input.nameValue.length &&
@@ -36,29 +32,60 @@ function SubmitTemaplete({
     currentColor.length ? setSubmit(true) : setSubmit(false);
   }, [currentColor]);
 
-  const HandleOnsubmit = () => {
+  const handleOnSubmit = async () => {
     if (inputValid && submit) {
-      alert('제출이 완료되었습니다.');
+      try {
+        // API 엔드포인트 URL
+        const apiUrl = 'http://wanted.ap-northeast-2.elasticbeanstalk.com/applications';
 
-      const list = localStorage.getItem('submitList')
-        ? JSON.parse(localStorage.getItem('submitList'))
-        : '';
+        // 요청 헤더 설정
+        const headers = {
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ6eGN2YjEyMzRAbmF2ZXIuY29tIiwiaXNzIjoiaGJqdzEyM0BnbWFpbC5jb20iLCJpYXQiOjE2OTM2NDM0NjQsImV4cCI6MTY5NDg1MzA2NCwiaWQiOjI2fQ.YS9icfEGEf37c5x-OLa5MHPI3BwEUb97_xQlQR6ZSSU'
+        };
 
-      localStorage.setItem(
-        'submitList',
-        JSON.stringify([
-          ...list,
-          {
-            id: 1,
-            companyName: 'Company Name', // 회사 이름을 하드코딩
-            position: 'Position', // 포지션을 하드코딩
+        // 요청 바디 데이터
+        const data = {
+          recruitment_id: 7, // 실제로 사용할 값으로 설정
+        };
+        // POST 요청 보내기
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ6eGN2YjEyMzRAbmF2ZXIuY29tIiwiaXNzIjoiaGJqdzEyM0BnbWFpbC5jb20iLCJpYXQiOjE2OTM2NDM0NjQsImV4cCI6MTY5NDg1MzA2NCwiaWQiOjI2fQ.YS9icfEGEf37c5x-OLa5MHPI3BwEUb97_xQlQR6ZSSU',
+            'Content-Type': 'application/json', // JSON 형식으로 요청을 보냄
           },
-        ])
-      );
+          body: JSON.stringify(data),
+        });
 
-      const newList = JSON.parse(localStorage.getItem('submitList'));
-      setSubmitList(newList);
-      navigate('/'); // navigate 함수를 사용하여 페이지 이동
+        console.log('Response:', response);
+
+        if (response.status === 200) {
+          alert('제출이 완료되었습니다.');
+
+          const list = localStorage.getItem('submitList')
+            ? JSON.parse(localStorage.getItem('submitList'))
+            : [];
+
+          // detailList에서 해당 공고의 정보를 가져와서 추가
+          const newDetail = list.find(item => item.recruitment_id === data.recruitment_id);
+          if (newDetail) {
+            list.push(newDetail);
+          }
+
+          localStorage.setItem('submitList', JSON.stringify(list));
+
+          const newList = JSON.parse(localStorage.getItem('submitList'));
+          setSubmitList(newList);
+          console.log(newList);
+          navigate('/');
+        } else {
+          // 오류 처리
+          console.error('제출 실패. 상태:', response.status);
+        }
+      } catch (error) {
+        // 네트워크 오류 또는 기타 오류 처리
+        console.error('오류:', error);
+      }
     }
   };
 
@@ -74,7 +101,7 @@ function SubmitTemaplete({
 
   return (
     <>
-      <SubmitTemapleteBlock
+      <SubmitTemplateBlock
         goToApply={goToApply}
         input={input}
         checkSubmit={checkSubmit}
@@ -87,7 +114,7 @@ function SubmitTemaplete({
           <h2>지원하기</h2>
           <button onClick={handleMove}>뒤로</button>
         </SubmitHead>
-        <SubmitConstents overflow="auto" height="450px">
+        <SubmitContents overflow="auto" height="450px">
           <SubmitText>
             <h2>지원하기</h2>
           </SubmitText>
@@ -122,33 +149,33 @@ function SubmitTemaplete({
           ))}
           <ApplyTemplateBtn color="#666">
             <form method="post" encType="multipart/form-data">
-              <label For="ex_file">파일 업로드</label>
+              <label htmlFor="ex_file">파일 업로드</label>
               <input type="file" id="ex_file" onChange={onFileChange} />
             </form>
           </ApplyTemplateBtn>
           <ApplyTemplateBtn color="#666">새 이력서 작성</ApplyTemplateBtn>
-          <SubmitConstents fontSize="13px" color="#666">
+          <SubmitContents fontSize="13px" color="#666">
             큐티드 이력서로 지원하면 최종 합격률이 40% 높아집니다.
-          </SubmitConstents>
-        </SubmitConstents>
+          </SubmitContents>
+        </SubmitContents>
         <SubmitFooter>
           <ApplyTemplateBtn
             color={submit ? 'white' : '#ccc'}
             backgroundColor={submit ? '#3366FF' : '#f2f4f7'}
-            onClick={HandleOnsubmit}
+            onClick={handleOnSubmit}
           >
             제출하기
           </ApplyTemplateBtn>
         </SubmitFooter>
-      </SubmitTemapleteBlock>
+      </SubmitTemplateBlock>
       {hideContent ? <HideContent hideContent={hideContent} /> : ''}
     </>
   );
 }
 
-export default SubmitTemaplete;
+export default SubmitTemplate;
 
-const SubmitTemapleteBlock = styled.div`
+const SubmitTemplateBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -159,7 +186,7 @@ const SubmitTemapleteBlock = styled.div`
   position: sticky;
   right: 0;
   top: 20px;
-  margin-top:1px;
+  margin-top: 1px;
   display: ${({ goToApply }) => (goToApply ? 'block' : 'none')};
 
   @media (max-width: 992px) {
@@ -173,8 +200,6 @@ const SubmitTemapleteBlock = styled.div`
     transform: translate(-50%, -50%);
     z-index: 111;
   }
-
-  
 `;
 
 const SubmitHead = styled.div`
@@ -205,7 +230,7 @@ const SubmitHead = styled.div`
   }
 `;
 
-const SubmitConstents = styled.div`
+const SubmitContents = styled.div`
   padding: 0 20px;
   margin-top: 20px;
   font-weight: 400;

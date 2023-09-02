@@ -59,17 +59,22 @@ export default function EmailCheck() {
           email,
           password,
         }),
-      });
-
+      })
+  
       if (response.ok) {
         const data = await response.json();
-
+        alert('로그인 성공!');
+        // Log the response data for debugging
+        console.log('Response Data:', data);
+  
         // Store tokens in localStorage
         localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('refresh_token', data.refresh_token);
-
+        console.log(data.access_token);
+        console.log(data.refresh_token);
+  
         // Redirect or navigate to the desired page after successful login
-        history.push('/dashboard'); // Change '/dashboard' to your desired route
+        navigate("/");
       } else {
         // Handle login failure, display an error message, etc.
       }
