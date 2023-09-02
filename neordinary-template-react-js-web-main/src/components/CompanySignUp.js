@@ -1,16 +1,64 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link, useNavigate } from 'react-router-dom'
-import packageJson from '../../package.json'
+import React, { useState } from 'react'
+import { Link, useNavigate, Button, Form } from 'react-router-dom'
 import './ComSignUp.css';
-import signUp from './signUp.js';
 
+function CompanySignUp() {
+    const [companyName, setCompanyName] = useState('');
+    const [registrationNumber, setRegistrationNumber] = useState('');
+    const [countryKey, setCountryKey] = useState('kr');
+    const [locationKey, setLocationKey] = useState('seoul');
+    const [industryId, setIndustryId] = useState('9927');
+    const [size, setSize] = useState('1~4');
 
+    const navigate = useNavigate();
 
-const CompanySignUp = () => {
+    const handleCompanyNameChange = (event) => {
+        setCompanyName(event.target.value);
+      };
+    
+    const handleRegistrationNumberChange = (event) => {
+        setRegistrationNumber(event.target.value);
+      };
+    const apiUrl = 'http://wanted.ap-northeast-2.elasticbeanstalk.com';
+    const companiesEndpoint = '/companies';
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+      const data = {
+        name: companyName,
+        business_reg_code: registrationNumber,
+        nation: countryKey,
+        region: locationKey,
+        industry: industryId,
+        employee_count: size,
+      };
+    const url = `${apiUrl}${companiesEndpoint}`;
 
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        
 
+        if (response.status!==200) {
+        const responseData = await response.json();
+        console.log('서버 응답:', responseData);
+        navigate('/company');
+      } else {
+        console.error('서버 응답 오류:', response.status);
+      }
+    } catch (error) {
+      console.error('오류 발생:', error);
+    }
+  };
+    
+    
+  
     return(
         <div id="app">
                 <div className="styled__MainAppWrapper-sc-4ve6dq-0 none">
@@ -25,26 +73,26 @@ const CompanySignUp = () => {
                                             </div>
                                         </div> 
                                     </header>
-                                    <form step={3} className="styles__FormWrapper-sc-ehs50u-1 jQIMqB">
+                                    <form onSubmit={handleSubmit} step={3} method='POST' className="styles__FormWrapper-sc-ehs50u-1 jQIMqB">
                                         <section step={3} className="styles__ContentsWrapper-sc-ehs50u-0 igjgev">
                                             <div className="styles__StepWrapper-sc-ehs50u-2 eEHJfw">
                                                 <h1>기업 정보를 등록해 주세요.</h1>
                                                 <div className="styled__ListWrapper-sc-1flml4t-0 glhUmC">
                                                     <span>회사 이름</span>
-                                                    <input type="text" placeholder="회사 이름" name="companyName" className="styled__StyledInput-sc-61w8cu-0 bHqaKu" />
+                                                    <input type="text" placeholder="회사 이름" name="companyName" value={companyName} onChange={handleCompanyNameChange} className="styled__StyledInput-sc-61w8cu-0 bHqaKu" />
                                                 </div>
                                                 <div className="styled__ListWrapper-sc-1flml4t-0 glhUmC">
                                                     <span>사업자 등록 번호</span>
-                                                        <input placeholder="'-'제외 숫자" type="text" name="registrationNumber" className="styled__StyledInput-sc-61w8cu-0 gsLgv" />
+                                                        <input placeholder="'-'제외 숫자" type="text" name="registrationNumber" value={registrationNumber} onChange={handleRegistrationNumberChange}  className="styled__StyledInput-sc-61w8cu-0 gsLgv" />
                                                 </div>
                                                 <div className="styles__SelectBoxWrapper-sc-ehs50u-4 dJRrZx">
                                                     <p>국가</p>
-                                                    <select name="countryKey" className="styles__CustomSelect-sc-ehs50u-5 enmNps">
-                                                <option value="kr">한국</option>
-                                                <option value="tw">대만</option>
-                                                <option value="sg">싱가폴</option>
-                                                <option value="jp">일본</option>
-                                                <option value="others">기타</option>
+                                                    <select name="countryKey" value={countryKey} onChange={(event) => setcountryKey(event.target.value)} className="styles__CustomSelect-sc-ehs50u-5 enmNps">
+                                                        <option value="kr">한국</option>
+                                                        <option value="tw">대만</option>
+                                                        <option value="sg">싱가폴</option>
+                                                        <option value="jp">일본</option>
+                                                        <option value="others">기타</option>
                                                     </select>
                                                     <svg width={10} height="5.714285714285714" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" direction="down" className="Arrow__SVGWrapper-sc-1aaw6vd-0 iwkpzY">
                                                         <path d="M0.21967 0.21967C0.485936 -0.0465966 0.9026 -0.0708027 1.19621 0.147052L1.28033 0.21967L6.999 5.938L12.7162 0.221101C12.9824 -0.04521 13.399 -0.0694853 13.6927 0.14832L13.7768 0.220925C14.0431 0.487147 14.0674 0.903807 13.8496 1.19745L13.777 1.28158L7.53042 7.53024C7.26416 7.79658 6.84745 7.82083 6.5538 7.60296L6.46967 7.53033L0.21967 1.28033C-0.0732233 0.987437 -0.0732233 0.512563 0.21967 0.21967Z" fill="currentColor" />
@@ -52,7 +100,7 @@ const CompanySignUp = () => {
                                                 </div>
                                                 <div className="styles__SelectBoxWrapper-sc-ehs50u-4 dJRrZx">
                                                     <p>지역</p>
-                                                    <select name="locationKey" className="styles__CustomSelect-sc-ehs50u-5 enmNps">
+                                                    <select name="locationKey" value={locationKey} onChange={(event) => setlocationKey(event.target.value)} className="styles__CustomSelect-sc-ehs50u-5 enmNps">
                                                         <option value="seoul">서울</option>
                                                         <option value="busan">부산</option>
                                                         <option value="daegu">대구</option>
@@ -77,7 +125,7 @@ const CompanySignUp = () => {
                                                 </div>
                                                 <div className="styles__SelectBoxWrapper-sc-ehs50u-4 dJRrZx">
                                                     <p>산업군</p>
-                                                    <select name="industryId" className="styles__CustomSelect-sc-ehs50u-5 coAubv">
+                                                    <select name="industryId" value={industryId} onChange={(event) => setindustryId(event.target.value)} className="styles__CustomSelect-sc-ehs50u-5 coAubv">
                                                         <option value disabled>산업군</option>
                                                         <option value={9927}>IT, 컨텐츠</option>
                                                         <option value={9924}>판매, 유통</option>
@@ -108,7 +156,7 @@ const CompanySignUp = () => {
                                                 </div>
                                                 <div className="styles__SelectBoxWrapper-sc-ehs50u-4 dJRrZx">
                                                     <p>직원수</p>
-                                                    <select name="size" className="styles__CustomSelect-sc-ehs50u-5 coAubv">
+                                                    <select name="size" value={size} onChange={(event) => setsize(event.target.value)} className="styles__CustomSelect-sc-ehs50u-5 coAubv">
                                                             <option value disabled>회사규모</option>
                                                             <option value="1~4">1~4명</option>
                                                             <option value="5~10">5~10명</option>
@@ -126,14 +174,13 @@ const CompanySignUp = () => {
                                                 </div>
                                             </div>
                                             <div className="styles__ButtonWrapper-sc-ehs50u-6 bSMlWH">
-                                                <button type="button" className="styled__Wrapper-sc-6qhr2f-0 frLTPh">
-                                                    <Link to="/company">
+                                            <Link to="/company">
+                                                <button type="button" className="styled__Wrapper-sc-6qhr2f-0 frLTPh" >
                                                     <svg width={13} height="7.428571428571429" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" direction="left" className="Arrow__SVGWrapper-sc-1aaw6vd-0 gYBxXR">
                                                         <path d="M0.21967 0.21967C0.485936 -0.0465966 0.9026 -0.0708027 1.19621 0.147052L1.28033 0.21967L6.999 5.938L12.7162 0.221101C12.9824 -0.04521 13.399 -0.0694853 13.6927 0.14832L13.7768 0.220925C14.0431 0.487147 14.0674 0.903807 13.8496 1.19745L13.777 1.28158L7.53042 7.53024C7.26416 7.79658 6.84745 7.82083 6.5538 7.60296L6.46967 7.53033L0.21967 1.28033C-0.0732233 0.987437 -0.0732233 0.512563 0.21967 0.21967Z" fill="var(--theme-palette-primary-normal)" />
                                                     </svg>이전
-                                                    </Link>
-                                                </button>
-                                                <button type="submit" disabled data-attribute-id="biz__register__next" className="styled__Wrapper-sc-6qhr2f-0 eNszdg">계속하기
+                                                </button></Link>
+                                                <button type="submit" onClick={handleSubmit} disabled={companyName.trim()  === ''} className={`styled__Wrapper-sc-6qhr2f-0 eNszdg`}>계속하기
                                                     <svg width={13} height="7.428571428571429" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" direction="right" className="Arrow__SVGWrapper-sc-1aaw6vd-0 eheCSJ">
                                                         <path d="M0.21967 0.21967C0.485936 -0.0465966 0.9026 -0.0708027 1.19621 0.147052L1.28033 0.21967L6.999 5.938L12.7162 0.221101C12.9824 -0.04521 13.399 -0.0694853 13.6927 0.14832L13.7768 0.220925C14.0431 0.487147 14.0674 0.903807 13.8496 1.19745L13.777 1.28158L7.53042 7.53024C7.26416 7.79658 6.84745 7.82083 6.5538 7.60296L6.46967 7.53033L0.21967 1.28033C-0.0732233 0.987437 -0.0732233 0.512563 0.21967 0.21967Z" fill="var(--theme-palette-label-disable)" />
                                                     </svg>
@@ -152,3 +199,4 @@ const CompanySignUp = () => {
 }
 
 export default CompanySignUp;
+
