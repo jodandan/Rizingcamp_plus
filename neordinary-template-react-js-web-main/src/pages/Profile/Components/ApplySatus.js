@@ -1,11 +1,43 @@
-import React from 'react';
+import { React,useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'; // 아이콘을 추가하세요
+import { faQuestionCircle , faTimes } from '@fortawesome/free-solid-svg-icons'; // 아이콘을 추가하세요
+
 
 
 export default function ApplyStatus() {
-  const list = JSON.parse(localStorage.getItem('submitList'));
+
+
+  const [list, setList] = useState([
+    {
+      thumbnail_url:
+        'https://images.unsplash.com/photo-1496449903678-68ddcb189a24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fCVFQiU5RSU5QyVFQiU4RCVBNHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+      title: 'SAP FICA Consultant',
+      company_name: 'JMC Corporation APJ',
+      response_rate: 98, // example response rate
+      location: 'Seoul', // example location
+      position: 'Development',
+    },
+    {
+      thumbnail_url:
+        'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fCVFQiU5RSU5QyVFQiU4RCVBNHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+      title: 'AI-based semiconductor equipment sensing collection and automatic control SW developer',
+      company_name: 'IV Works',
+      response_rate: 95, // example response rate
+      location: 'Busan', // example location
+      position: 'Development',
+    },
+  ]);
+
+  const handleCancelApplication = (index) => {
+    // Create a copy of the list
+    const updatedList = [...list];
+    // Remove the item at the specified index
+    updatedList.splice(index, 1);
+    // Update the state with the new list
+    setList(updatedList);
+  };
+
 
   const day = new Date();
   const today = day.toLocaleDateString();
@@ -62,10 +94,10 @@ export default function ApplyStatus() {
                 </i>
           </SectionSpan>
         </SectionForm>
-        {list?.map((list, inx) => {
+        {list?.map((list, index) => {
           return (
-            <SectionForm key={inx} backcolor border height size>
-              <SectionSpan width>{list.companyName}</SectionSpan>
+            <SectionForm key={index} backcolor border height size>
+              <SectionSpan width>{list.company_name}</SectionSpan>
               <SectionSpan>
                 {list.position.length > 7
                   ? `${list.position.substr(0, 8)}...`
@@ -75,6 +107,9 @@ export default function ApplyStatus() {
               <SectionSpan>접수</SectionSpan>
               <SectionSpan>대기중</SectionSpan>
               <SectionSpan>신청</SectionSpan>
+              <CancelButton onClick={() => handleCancelApplication(index)}>
+                    <FontAwesomeIcon icon={faTimes} />
+              </CancelButton>
             </SectionForm>
           );
         })}
@@ -180,5 +215,18 @@ const SectionSpan = styled.span`
   i {
     margin-left: 4px;
     font-size: 14px;
+  }
+`;
+
+const CancelButton = styled.button`
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 10px;
+
+  &:hover {
+    color: darkred;
   }
 `;

@@ -262,6 +262,7 @@ export default function AppJoin({ navigateToLogin }) {
 
 const SignUpModal = styled.div`
   position: fixed;
+  height: 700px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
