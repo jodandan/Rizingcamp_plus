@@ -38,6 +38,7 @@ function CompanySignUp() {
       try {
         const response = await fetch(url, {
           method: 'POST',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -45,7 +46,7 @@ function CompanySignUp() {
         });
         
 
-        if (response.status!==200) {
+        if (response.ok) {
         const responseData = await response.json();
         console.log('서버 응답:', responseData);
         navigate('/company');
