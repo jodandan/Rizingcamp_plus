@@ -79,7 +79,7 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 
 ![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/7d99cbce-1010-4cb3-a9b0-d0a38fd1b39a)
 ![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/10011e87-632a-4432-989b-fc02beb4d70f)
-![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/90e5f5a9-493a-4a9a-a8fa-28004a7ab759)
+
 
 
 <br>
@@ -89,9 +89,9 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 ### 지원현황페이지
 
 회사 지원 페이지를 통하여 지원한 회사의 정보,시간 등을 표기하여 마이페이지를 구현하였습니다.<br>
+![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/90e5f5a9-493a-4a9a-a8fa-28004a7ab759)
 ![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/20ac8337-4544-42da-bdf9-c62a86134554)
 
-![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/b2df61cf-e213-4d3a-92b0-ab6ad41e96d7)
 
 
 <br>
@@ -101,7 +101,8 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 ### 관리자 메인 페이지
 
 관리자의 로그인 기능도 필요한 부분이기때문에 관리자 메인페이지도 따로 제작하였습니다.<br>
-![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/5e95fc22-c146-4783-a788-b56370c1685b)
+![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/b2df61cf-e213-4d3a-92b0-ab6ad41e96d7)
+
 
 
 <br>
