@@ -1,4 +1,4 @@
-![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/bd592351-1a27-4226-8612-4a80dbce6542)# Rizingcamp_plus
+# Rizingcamp_plus
 Rizingcamp_plus에서 진행한 원티드 홈페이지 클론코딩입니다.
 
 
@@ -20,12 +20,13 @@ Rizingcamp_plus에서 진행한 원티드 홈페이지 클론코딩입니다.
 
 
  ## 목차 
- - [로그인 UI](#로그인ui)
- - [메인화면 UI](#메인화면ui)
- - [마이페이지 UI](#관리자화면ui)
+ - [로그인 UI](#로그인화면)
+ - [메인화면 UI](#메인화면)
+ - [마이페이지 UI](#마이페이지화면)
+ - [마이페이지 UI](#관리자화면)
  - [1.개발을 하고 싶어요](#개발을-하고-싶어요)
 
-## 로그인 UI 
+## 로그인화면
 
 **로그인&회원가입 페이지** <br>
 
@@ -40,7 +41,7 @@ Rizingcamp_plus에서 진행한 원티드 홈페이지 클론코딩입니다.
 
 <br>
 
-## 메인화면 UI 
+## 메인화면
 ### 📍**홈 화면**
 
 
@@ -83,7 +84,7 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 
 <br>
 
-# 마이페이지UI 
+## 마이페이지화면
 
 ### 지원현황페이지
 
@@ -95,7 +96,7 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 
 <br>
 
-# 관리자 페이지UI
+## 관리자화면
 
 ### 관리자 메인 페이지
 
@@ -109,9 +110,8 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 
 회사이름, 사업자번호,회사규모,나라 등의 정보를 받아 회원가입을 진행할 수 있게끔 구현하였습니다.<br>
 
-<br>
+![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/5a6efa3c-e04b-410c-b52d-885c6fb3fa40)
 
-![Uploading image.png…]()
 
 
 
