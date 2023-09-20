@@ -111,7 +111,6 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 회사이름, 사업자번호,회사규모,나라 등의 정보를 받아 회원가입을 진행할 수 있게끔 구현하였습니다.<br>
 
 ![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/5a6efa3c-e04b-410c-b52d-885c6fb3fa40)
-![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/5510798f-29b0-4ca7-b826-6a42a71c0f16)
 
 
 
