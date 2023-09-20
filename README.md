@@ -23,8 +23,7 @@ Rizingcamp_plus에서 진행한 원티드 홈페이지 클론코딩입니다.
  - [로그인 UI](#로그인화면)
  - [메인화면 UI](#메인화면)
  - [마이페이지 UI](#마이페이지화면)
- - [마이페이지 UI](#관리자화면)
- - [1.개발을 하고 싶어요](#개발을-하고-싶어요)
+ - [관리자화면 UI](#관리자화면)
 
 ## 로그인화면
 
@@ -112,6 +111,8 @@ header, Foorter, Autoslide 기능이 구현되어있습니다.<br>
 회사이름, 사업자번호,회사규모,나라 등의 정보를 받아 회원가입을 진행할 수 있게끔 구현하였습니다.<br>
 
 ![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/5a6efa3c-e04b-410c-b52d-885c6fb3fa40)
+![image](https://github.com/jodandan/Rizingcamp_plus/assets/113495894/5510798f-29b0-4ca7-b826-6a42a71c0f16)
+
 
 
 
